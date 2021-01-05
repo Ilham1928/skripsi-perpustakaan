@@ -13,7 +13,14 @@ class UserBorrow extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('borrow', function (Blueprint $table) {
+            $table->increments('borrow_id');
+            $table->integer('user_id');
+            $table->string('book_id');
+            $table->date('borrow_date');
+            $table->date('return_date');
+            $table->timestamps();
+        });
     }
 
     /**

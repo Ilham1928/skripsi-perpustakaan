@@ -13,7 +13,15 @@ class Book extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('book', function (Blueprint $table) {
+            $table->increments('book_id');
+            $table->integer('uuid');
+            $table->string('name');
+            $table->string('publisher');
+            $table->date('publish_at');
+            $table->integer('stock');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class Book extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('book');
     }
 }
