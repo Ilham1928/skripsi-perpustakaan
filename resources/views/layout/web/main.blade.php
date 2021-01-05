@@ -1,0 +1,12 @@
+<html>
+    <head>
+        @include('layout.web.header')
+    </head>
+    <body>
+        @include('layout.web.navbar')
+        @yield('content')
+    </body>
+    <footer>
+        @include('layout.web.footer')
+    </footer>
+</html>
