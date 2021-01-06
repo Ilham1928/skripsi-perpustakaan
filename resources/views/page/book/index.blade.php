@@ -75,3 +75,9 @@
     </div>
 </section>
 @endsection
+
+@push('js')
+    <script type="text/javascript">
+        $('li[menu="book"]').addClass('active')
+    </script>
+@endpush

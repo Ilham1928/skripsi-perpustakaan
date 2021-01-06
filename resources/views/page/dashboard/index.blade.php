@@ -297,3 +297,9 @@
     </div>
 </section>
 @endsection
+
+@push('js')
+    <script type="text/javascript">
+        $('li[menu="dashboard"]').addClass('active')
+    </script>
+@endpush

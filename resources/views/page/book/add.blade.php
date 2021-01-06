@@ -11,7 +11,7 @@
             <div class="modal-content">
                 <div class="modal-header row">
                     <div class="col-md-6">
-                        <h4 class="modal-title">Tambah Data Buku</h4>
+                        <h4 class="modal-title">Tambah {{ $title }}</h4>
                     </div>
                     <div class="col-md-6">
                         <button type="submit" class="btn btn-sm btn-primary pull-right" style="margin-left:10px;">Save</button>

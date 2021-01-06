@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,11 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/book/edit/{id}', [BookController::class, 'edit']);
     Route::post('/book/edit/{id}', [BookController::class, 'update']);
     Route::get('/book/delete/{id}', [BookController::class, 'delete']);
+
+    Route::get('/category', [CategoryController::class, 'index']);
+    Route::get('/category/add', [CategoryController::class, 'add']);
+    Route::post('/category/add', [CategoryController::class, 'create']);
+    Route::get('/category/edit/{id}', [CategoryController::class, 'edit']);
+    Route::post('/category/edit/{id}', [CategoryController::class, 'update']);
+    Route::get('/category/delete/{id}', [CategoryController::class, 'delete']);
 });
