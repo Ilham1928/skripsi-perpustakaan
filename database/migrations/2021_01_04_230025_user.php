@@ -17,8 +17,7 @@ class User extends Migration
             $table->increments('user_id');
             $table->string('name');
             $table->string('class');
-            $table->string('nisn');
-            $table->string('email')->unique();
+            $table->integer('nisn')->unique();
             $table->string('password');
             $table->timestamps();
         });

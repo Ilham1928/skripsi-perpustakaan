@@ -8,10 +8,10 @@
             </fieldset>
             <div class="inner-form">
                 <div class="input-field first-wrap">
-                    <input id="search" type="text" placeholder="What are you looking for?" />
+                    <input autocomplete="off" id="search" type="text" placeholder="Apa yang kamu cari?" />
                 </div>
                 <div class="input-field fifth-wrap">
-                    <button class="btn-search" type="button">SEARCH</button>
+                    <button class="btn-search" type="button">Pencarian</button>
                 </div>
             </div>
         </form>

@@ -1291,7 +1291,7 @@ span.flatpickr-weekday {
   -ms-flex-align: center;
   align-items: center;
   font-family: 'Poppins', sans-serif;
-  background: rgba(2, 30, 34, 0.42);
+  background: rgb(0 0 0 / 0.44);
   background-repeat: no-repeat;
   background-size: cover;
   padding: 15px;
