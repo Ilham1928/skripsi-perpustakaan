@@ -18,6 +18,7 @@
             margin: 0;
         }
         .text-white { color: #fff !important; }
+        .text-green { color: #43e443 !important; }
         .text-red { color: red !important; }
         .text-md { font-size: 30px !important; }
         .text-sm { font-size: 15px !important; }
@@ -30,6 +31,9 @@
             <div class="heder" style="padding-top:2px;">
                 @if($errors->any())
                     <h4 class="text-red text-center">{{$errors->first()}}</h4>
+                @endif
+                @if($message = Session::get('success'))
+                    <h4 class="text-green text-center">{{ $message }}</h4>
                 @endif
             </div>
             <div class="body">
@@ -64,7 +68,7 @@
                     </div>
                     <div class="row m-t-15 m-b--20">
                         <div class="col-xs-12 align-right">
-                            <a href="sign-up.html" class="text-white font-weight-bold">Sign Up?</a>
+                            <a href="{{ url('register') }}" class="text-white font-weight-bold">Sign Up?</a>
                         </div>
                     </div>
                 </form>
