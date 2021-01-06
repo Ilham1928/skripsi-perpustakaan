@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/book/edit/{id}', [BookController::class, 'edit']);
     Route::post('/book/edit/{id}', [BookController::class, 'update']);
     Route::get('/book/delete/{id}', [BookController::class, 'delete']);
+    Route::get('/book/category', [BookController::class, 'category']);
 
     Route::get('/category', [CategoryController::class, 'index']);
     Route::get('/category/add', [CategoryController::class, 'add']);

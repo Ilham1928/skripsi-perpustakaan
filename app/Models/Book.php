@@ -10,6 +10,7 @@ class Book extends Model
     protected $primaryKey = 'book_id';
     protected $fillable = [
         'uuid',
+        'cover',
         'name',
         'writer',
         'publisher',

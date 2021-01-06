@@ -16,6 +16,8 @@ class Book extends Migration
         Schema::create('book', function (Blueprint $table) {
             $table->increments('book_id');
             $table->integer('uuid');
+            $table->integer('category_id');
+            $table->string('cover');
             $table->string('name');
             $table->string('writer');
             $table->string('publisher');

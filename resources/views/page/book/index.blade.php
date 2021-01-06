@@ -13,6 +13,9 @@
                         </div>
                     </div>
                     <div class="body">
+                        @if($message = Session::get('success'))
+                        <h4 style="text-align:center; color:#43e443">{{ $message }}</h4>
+                        @endif
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                 <thead>
@@ -55,11 +58,11 @@
                                                 <td>{{ $value->name }}</td>
                                                 <td>{{ $value->writer }}</td>
                                                 <td>{{ $value->publisher }}</td>
-                                                <td>{{ date('Y', strtotime($value->publish_date)) }}</td>
+                                                <td>{{ date('Y', strtotime($value->publish_at)) }}</td>
                                                 <td>{{ $value->stock }}</td>
                                                 <td>
-                                                    <a href="{{ url('book/edit/' . $value->book_id) }}" class="btn btn-sm btn-success">Edit</a>
-                                                    <a href="{{ url('book/delete/' . $value->book_id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                                    <button type="button" onclick="edit('{{ $value->book_id }}')" class="btn btn-sm btn-success">Edit</button>
+                                                    <a href="{{ url('admin/book/delete/' . $value->book_id) }}" class="btn btn-sm btn-danger">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -70,6 +73,7 @@
                     </div>
                 </div>
                 @include('page.book.add')
+                @include('page.book.edit')
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@
 @endpush
 <div id="create" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
-        <form action="{{ url('admin/book/add') }}" method="post">
+        <form action="{{ url('admin/book/add') }}" enctype="multipart/form-data" method="post">
             @csrf
             <div class="modal-content">
                 <div class="modal-header row">
@@ -21,6 +21,22 @@
                 <hr>
                 <div class="modal-body">
                     <div class="form-horizontal">
+                        @if($errors->any())
+                            <h4 style="text-align:center; color:red">{{$errors->first()}}</h4>
+                        @endif
+                        <div class="row clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                <label>Cover :</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="file" required autocomplete="off" class="form-control" name="cover">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin:10px 0;"></div>
                         <div class="row clearfix">
                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                 <label>ID Buku :</label>
@@ -28,7 +44,7 @@
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="uuid" value="{{ request()->old('uuid') ?? '' }}">
+                                        <input type="number" required autocomplete="off" class="form-control" name="uuid" value="{{ request()->old('uuid') ?? '' }}">
                                     </div>
                                 </div>
                             </div>
@@ -41,10 +57,10 @@
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <select class="form-control show-tick" name="category_id">
+                                        <select required autocomplete="off" class="form-control show-tick" name="category_id">
                                             <option value="">--- Silakan Pilih ---</option>
                                             @foreach($category as $value)
-                                                <option value="{{ $value->category_id }}">{{ $value->category_name }}</option>
+                                                <option value="{{ $value->category_id }}">{{ $value->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -59,7 +75,7 @@
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="name" value="{{ request()->old('name') ?? '' }}">
+                                        <input required autocomplete="off" type="text" class="form-control" name="name" value="{{ request()->old('name') ?? '' }}">
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +88,7 @@
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="writer" value="{{ request()->old('writer') ?? '' }}">
+                                        <input required autocomplete="off" type="text" class="form-control" name="writer" value="{{ request()->old('writer') ?? '' }}">
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +101,7 @@
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="publisher" value="{{ request()->old('publisher') ?? '' }}">
+                                        <input required autocomplete="off" type="text" class="form-control" name="publisher" value="{{ request()->old('publisher') ?? '' }}">
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +114,7 @@
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" class="yearpicker form-control" name="publish_date" value="{{ request()->old('publish_date') ?? '' }}" />
+                                        <input required autocomplete="off" type="text" class="yearpicker form-control" name="publish_at" value="{{ request()->old('publish_date') ?? '' }}" />
                                     </div>
                                 </div>
                             </div>
@@ -111,7 +127,7 @@
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="number" class="form-control" name="stock" value="{{ request()->old('stock') ?? '' }}">
+                                        <input required autocomplete="off" type="number" class="form-control" name="stock" value="{{ request()->old('stock') ?? '' }}">
                                     </div>
                                 </div>
                             </div>
