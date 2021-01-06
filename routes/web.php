@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 
@@ -46,4 +47,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/category/edit/{id}', [CategoryController::class, 'edit']);
     Route::post('/category/edit/{id}', [CategoryController::class, 'update']);
     Route::get('/category/delete/{id}', [CategoryController::class, 'delete']);
+
+    Route::get('/student', [StudentController::class, 'index']);
+    Route::get('/student/edit/{id}', [StudentController::class, 'edit']);
+    Route::post('/student/edit/{id}', [StudentController::class, 'update']);
+    Route::get('/student/delete/{id}', [StudentController::class, 'delete']);
 });

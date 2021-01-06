@@ -10,7 +10,7 @@
                     </a>
                 </li>
                 <li menu="student">
-                    <a href="pages/typography.html">
+                    <a href="{{ url('admin/student') }}">
                         <i class="material-icons">supervisor_account</i>
                         <span>Data Siswa</span>
                     </a>
