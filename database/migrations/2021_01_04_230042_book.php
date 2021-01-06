@@ -17,6 +17,7 @@ class Book extends Migration
             $table->increments('book_id');
             $table->integer('uuid');
             $table->string('name');
+            $table->string('writer');
             $table->string('publisher');
             $table->date('publish_at');
             $table->integer('stock');

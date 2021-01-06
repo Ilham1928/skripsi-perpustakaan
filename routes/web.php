@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,11 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+
+    Route::get('/book', [BookController::class, 'index']);
+    Route::get('/book/add', [BookController::class, 'add']);
+    Route::post('/book/add', [BookController::class, 'create']);
+    Route::get('/book/edit/{id}', [BookController::class, 'edit']);
+    Route::post('/book/edit/{id}', [BookController::class, 'update']);
+    Route::get('/book/delete/{id}', [BookController::class, 'delete']);
 });

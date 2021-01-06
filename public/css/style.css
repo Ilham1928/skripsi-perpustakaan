@@ -2958,7 +2958,7 @@ section.content {
     border-bottom: 1px solid rgba(204, 204, 204, 0.35); }
     .card .header .header-dropdown {
       position: absolute;
-      top: 20px;
+      top: 10px;
       right: 15px;
       list-style: none; }
       .card .header .header-dropdown .dropdown-menu li {
