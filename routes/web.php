@@ -23,6 +23,7 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::post('/result', [HomeController::class, 'search']);
+Route::get('/detail/{id}', [HomeController::class, 'detail']);
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);

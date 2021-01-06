@@ -33,4 +33,20 @@ class HomeController extends Controller
                 'data' => $data
             ]);
     }
+
+    public function detail($id)
+    {
+        $data = Book::select('*')
+            ->selectRaw("
+                if(cover is null or cover = '', null,
+                CONCAT('".asset('storage/cover')."/',
+                cover)) as cover"
+            )->where('book_id', $id)
+            ->first();
+
+        return response()->json([
+            'code' => 200,
+            'data' => $data
+        ]);
+    }
 }

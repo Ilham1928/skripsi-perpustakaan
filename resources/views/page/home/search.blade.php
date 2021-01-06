@@ -76,14 +76,15 @@
                                 <div class="card-img">
                                     <img src="{{ $value->cover }}" alt="">
                                 </div>
-                                <div class="card-desc">
+                                <div class="card-desc mt-2">
                                     <h4 class="mb-0">{{ $value->name }}</h4>
-                                    <p class="mb-0">Penulis : {{ $value->writer }}</p>
-                                    <p class="mb-0">Penerbit : {{ $value->publisher }}</p>
+                                    <p class="mb-0">{{ $value->publisher }}</p>
                                     <small>{{ date('Y', strtotime($value->publish_at)) }}</small>
                                     <hr>
                                     <center>
-                                        <a href="#" class="btn btn-sm btn-search">Detail</a>
+                                        <button type="button" class="btn btn-sm btn-search" onclick="detail('{{ $value->book_id }}')">
+                                            Detail
+                                        </button>
                                     </center>
                                 </div>
                             </div>
@@ -92,6 +93,7 @@
                 @endif
             </div>
         </div>
+        @include('page.home.detail')
     </div>
 </div>
 @endsection
