@@ -55,7 +55,8 @@ class AuthController extends Controller
             setcookie('__idx'.$user->nisn, $user->user_id, time() + (86400 * 30), "/");
         }
 
-        return redirect('/admin/dashboard');
+        if ($admin) return redirect('/admin/dashboard');
+        if ($user) return redirect('/');
     }
 
     protected function invalid($message, $request)
