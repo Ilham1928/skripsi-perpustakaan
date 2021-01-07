@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="s002">
-        <form action="{{ url('result') }}" method="post">
+        <form action="{{ url('result') }}" method="get">
             <fieldset>
                 <legend style="font-size:25px;">Masuka dua atau lebih kata kunci dari judul, pengarang, atau subyek</legend>
             </fieldset>

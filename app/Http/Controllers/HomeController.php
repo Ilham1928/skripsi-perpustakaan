@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\UserBorrow;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -48,5 +49,29 @@ class HomeController extends Controller
             'code' => 200,
             'data' => $data
         ]);
+    }
+
+    public function borrow(Request $request)
+    {
+        $check = UserBorrow::where('user_id', $request->user_id)
+            ->where('book_id', $request->book_id)
+            ->where('return_date', '<=', date('Y-m-d'))
+            ->first();
+
+        if (!$check) {
+            UserBorrow::create([
+                'book_id' => $request->book_id,
+                'user_id' => $request->user_id,
+                'borrow_date' => date('Y-m-d'),
+                'return_date' => date('Y-m-d', strtotime($request->date))
+            ]);
+
+            return redirect()->back()
+                ->with('success', 'Berhasil Meminjam Buku');
+        }else{
+            return redirect()->back()
+                ->with('failed', 'Kamu masih meminjam buku ini');
+        }
+
     }
 }

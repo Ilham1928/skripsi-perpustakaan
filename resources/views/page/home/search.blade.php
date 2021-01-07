@@ -53,11 +53,19 @@
 <div style="background: rgb(0 0 0 / 0.44); height:99vh">
     <hr style="border:1px solid #fff; margin:0">
     <div class="container-fluid mt-5">
-        <form action="{{ url('result') }}" method="post">
+        @if($message = Session::get('success'))
+            <h4 class="text-success text-center mb-5 alert bg-light w-50 offset-md-3">{{ $message }}</h4>
+        @endif
+
+        @if($message = Session::get('failed'))
+            <h4 class="text-danger text-center mb-5 alert bg-light w-50 offset-md-3">{{ $message }}</h4>
+        @endif
+
+        <form action="{{ url('result') }}" method="get">
             <div class="offset-md-5 offset-lg-6 col-lg-6 col-md-7">
                 <div class="input-group ">
                     @csrf
-                    <input type="text" placeholder="Masukan kata kunci" class="w-75 input-search" name="keyword" value="">
+                    <input type="text" autocomplete="off" placeholder="Masukan kata kunci" class="w-75 input-search" name="keyword" value="{{ $keyword ?? '' }}">
                     <button type="submit" class="btn-search" name="button">Cari</button>
                 </div>
             </div>
@@ -71,7 +79,7 @@
                     <h4 class="text-white offset-md-1">Tidak ada hasil ...</h4>
                 @else
                     @foreach($data as $value)
-                        <div class="col-md-2 mb-5 mt-5">
+                        <div class="col-md-3 mb-5 mt-5">
                             <div class="card-content">
                                 <div class="card-img">
                                     <img src="{{ $value->cover }}" alt="">

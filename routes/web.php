@@ -8,6 +8,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -22,8 +23,9 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::post('/result', [HomeController::class, 'search']);
+Route::get('/result', [HomeController::class, 'search']);
 Route::get('/detail/{id}', [HomeController::class, 'detail']);
+Route::post('/borrow', [HomeController::class, 'borrow']);
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
@@ -49,6 +51,11 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/category/edit/{id}', [CategoryController::class, 'edit']);
     Route::post('/category/edit/{id}', [CategoryController::class, 'update']);
     Route::get('/category/delete/{id}', [CategoryController::class, 'delete']);
+
+    Route::get('/borrow', [BorrowController::class, 'index']);
+    Route::get('/borrow/edit/{id}', [BorrowController::class, 'edit']);
+    Route::post('/borrow/edit/{id}', [BorrowController::class, 'update']);
+    Route::get('/borrow/delete/{id}', [BorrowController::class, 'delete']);
 
     Route::get('/student', [StudentController::class, 'index']);
     Route::get('/student/edit/{id}', [StudentController::class, 'edit']);
