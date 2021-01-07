@@ -4,8 +4,8 @@
         <?php if(!empty(request()->segment(1))) { ?>
             <a class="btn text-white btn-white mr-sm-2" style="background:rgba(255, 255, 255, 0.26);" href="{{ url('/') }}">Home</a>
         <?php } ?>
-        <button class="btn text-white btn-white mr-sm-2" style="background:rgba(255, 255, 255, 0.26);" type="button">Data Peminjam Buku</button>
         <?php if(!empty($_COOKIE['is_user'])) { ?>
+            <a class="btn text-white btn-white mr-sm-2" style="background:rgba(255, 255, 255, 0.26);" href="{{ url('/borrowed/' . $_COOKIE['__idx']) }}">Data Peminjam Buku</a>
             <a class="btn text-white btn-white my-2 my-sm-0" style="background:rgba(255, 255, 255, 0.26);" href="{{ url('/logout') }}">Logout</a>
         <?php }else{ ?>
             <a class="btn text-white btn-white my-2 my-sm-0" style="background:rgba(255, 255, 255, 0.26);" href="{{ url('/login') }}">Login</a>

@@ -63,7 +63,7 @@ class HomeController extends Controller
                 'book_id' => $request->book_id,
                 'user_id' => $request->user_id,
                 'borrow_date' => date('Y-m-d'),
-                'return_date' => date('Y-m-d', strtotime($request->date))
+                'return_date' => $request->return_date
             ]);
 
             return redirect()->back()
@@ -72,6 +72,25 @@ class HomeController extends Controller
             return redirect()->back()
                 ->with('failed', 'Kamu masih meminjam buku ini');
         }
+    }
 
+    public function bookBorrowed($id)
+    {
+        $data = UserBorrow::select('*')
+            ->selectRaw("
+                if(cover is null or cover = '', null,
+                CONCAT('".asset('storage/cover')."/',
+                cover)) as cover"
+            )
+            ->join('book', 'book.book_id', '=', 'borrow.book_id')
+            ->where('user_id', $id)
+            ->where('return_date', '<=', date('Y-m-d'))
+            ->get();
+
+        return view('page.home.borrow')
+            ->with([
+                'title' => 'Data Peminjaman Buku',
+                'data' => $data
+            ]);
     }
 }

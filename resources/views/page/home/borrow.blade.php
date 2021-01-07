@@ -71,12 +71,12 @@
             </div>
         </form>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-2">
-            <h4 class="text-white">Hasil Pencarian : {{ $keyword }}</h4>
+            <h4 class="text-white">Data Pinjaman Buku</h4>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-5">
             <div class="row">
                 @if($data->isEmpty())
-                    <h4 class="text-white offset-md-1">Tidak ada hasil ...</h4>
+                    <h4 class="text-white offset-md-1">Kamu belum meminjam ...</h4>
                 @else
                     @foreach($data as $value)
                         <div class="col-md-3 mb-5 mt-5">

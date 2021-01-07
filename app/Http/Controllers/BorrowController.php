@@ -11,51 +11,36 @@ class BorrowController extends Controller
 {
     public function index()
     {
-        $data = UserBorrow::get();
+        $data = UserBorrow::select(
+                'borrow.*',
+                'book.*',
+                'user.name as student_name',
+                'user.class'
+            )
+            ->join('book', 'book.book_id', '=', 'borrow.book_id')
+            ->join('user', 'user.user_id', '=', 'borrow.user_id')
+            ->get();
 
-        return view('page.category.index')
+        return view('page.borrow.index')
             ->with([
-                'title' => "Kategori Buku",
+                'title' => "Data Peminjaman",
                 'data' => $data,
             ]);
     }
 
-    public function edit($id)
+    public function update(Request $request)
     {
-        $data = UserBorrow::where('category_id', $id)->first();
-        return response()->json([
-            'data' => $data,
-            'code' => 200
-        ]);
-    }
+        UserBorrow::where('borrow_id', $request->borrow_id)
+            ->update(['return_date' => $request->return_date]);
 
-    public function update(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return $this->invalid($validator->errors()->first(), $request);
-        }
-
-        UserBorrow::where('category_id', $id)->update(['name' => $request->name]);
-
-        return redirect('admin/category')
-            ->with('success', 'Berhasil Mengubah Kategori');
+        return response()->json(['code' => 200]);
     }
 
     public function delete($id)
     {
-        UserBorrow::where('category_id', $id)->delete();
+        UserBorrow::where('borrow_id', $id)->delete();
 
-        return redirect('admin/category')
-            ->with('success', 'Berhasil Menghapus Kategori');
-    }
-
-    protected function invalid($message, $request)
-    {
-        return back()->withErrors(['msg' => $message])
-            ->withInput($request->all());
+        return redirect('admin/borrow')
+            ->with('success', 'Berhasil Menghapus Peminjaman');
     }
 }

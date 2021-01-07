@@ -26,6 +26,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/result', [HomeController::class, 'search']);
 Route::get('/detail/{id}', [HomeController::class, 'detail']);
 Route::post('/borrow', [HomeController::class, 'borrow']);
+Route::get('/borrowed/{id}', [HomeController::class, 'bookBorrowed']);
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);

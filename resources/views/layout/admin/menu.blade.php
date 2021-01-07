@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li menu="borrow">
-                    <a href="pages/helper-classes.html">
+                    <a href="{{ url('admin/borrow') }}">
                         <i class="material-icons">swap_vertical_circle</i>
                         <span>Data Peminjaman</span>
                     </a>
