@@ -43,17 +43,17 @@
                         <label class="form-control-label font-weight-bold col-xs-1"> : </label>
                         <label class="col-md" jq="borrow_date"></label>
                     </div>
-                    <div class="d-flex">
+                    <div class="d-flex" jq="borrow">
                         <label class="form-control-label font-weight-bold col-sm-2">Tanggal Kembali</label>
                         <label class="form-control-label font-weight-bold col-xs-1"> : </label>
                         <label class="col-md" jq="return_date"></label>
                     </div>
                     <div class="d-none" jq="return">
-                        <label class="form-control-label font-weight-bold col-sm-2">Pengembalian</label>
+                        <label class="form-control-label font-weight-bold col-sm-2">Tanggal Kembali</label>
                         <label class="form-control-label font-weight-bold col-xs-1"> : </label>
                         <label class="col-md">
                             @csrf
-                            <input type="date" required name="return_date" class="form-control col-md-5">
+                            <input type="date" required jq="return_date" name="return_date" class="form-control col-md-5">
                         </label>
                     </div>
                 </div>
@@ -90,6 +90,7 @@
                     $('label[jq="stock"]').empty().append(res.data.stock)
                     $('label[jq="borrow_date"]').empty().append(res.data.borrow_date)
                     $('label[jq="return_date"]').empty().append(res.data.return_date)
+                    $('input[jq="return_date"]').val(res.data.return_date)
                     $('img[jq="cover"]').attr('src', res.data.cover)
                     $('form[method="post"]').attr('action', '{{ url("borrow/update") }}' + '/' + id)
                 }else{
@@ -107,6 +108,7 @@
         }else{
             $('div[jq="return"]').removeClass('d-none').addClass('d-flex')
             $('button[jq="borrow"]').addClass('d-none')
+            $('div[jq="borrow"]').addClass('d-none').removeClass('d-flex')
             $('button[jq="save"]').removeClass('d-none')
         }
     }
@@ -114,6 +116,7 @@
     function cancel() {
         $('div[jq="return"]').removeClass('d-flex').addClass('d-none')
         $('button[jq="borrow"]').renoveClass('d-none')
+        $('div[jq="borrow"]').renoveClass('d-none')
         $('button[jq="save"]').addClass('d-none')
     }
 </script>
