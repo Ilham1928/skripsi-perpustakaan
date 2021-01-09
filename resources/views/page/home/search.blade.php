@@ -50,7 +50,7 @@
 @endpush
 
 @section('content')
-<div style="background: rgb(0 0 0 / 0.44);">
+<div class="h-100" style="background: rgb(0 0 0 / 0.44);">
     <hr style="border:1px solid #fff; margin:0">
     <div class="container-fluid mt-5">
         @if($message = Session::get('success'))
