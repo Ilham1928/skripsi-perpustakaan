@@ -63,7 +63,7 @@
 <script type="text/javascript">
 
     function detail(id) {
-        var user_id = '{{ $_COOKIE["__idx"] }}'
+        var user_id = '{{ $_COOKIE["__idx"] ?? "" }}'
         $.ajax({
             url: '{{ url("detail") }}' +'/'+ id,
             type: 'GET',
