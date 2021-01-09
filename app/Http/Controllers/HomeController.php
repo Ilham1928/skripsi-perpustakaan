@@ -55,7 +55,7 @@ class HomeController extends Controller
     {
         $check = UserBorrow::where('user_id', $request->user_id)
             ->where('book_id', $request->book_id)
-            ->where('return_date', '<=', date('Y-m-d'))
+            ->where('return_date', '>', date('Y-m-d'))
             ->first();
 
         if (!$check) {
@@ -84,7 +84,7 @@ class HomeController extends Controller
             )
             ->join('book', 'book.book_id', '=', 'borrow.book_id')
             ->where('user_id', $id)
-            ->where('return_date', '<=', date('Y-m-d'))
+            ->where('return_date', '>', date('Y-m-d'))
             ->get();
 
         return view('page.home.borrow')
