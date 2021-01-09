@@ -91,7 +91,7 @@
                                     <small>{{ date('Y', strtotime($value->publish_at)) }}</small>
                                     <hr>
                                     <center>
-                                        <button type="button" class="btn btn-sm btn-search" onclick="detail('{{ $value->book_id }}')">
+                                        <button type="button" class="btn btn-sm btn-search" onclick="detail('{{ $value->borrow_id }}')">
                                             Detail
                                         </button>
                                     </center>
@@ -102,7 +102,7 @@
                 @endif
             </div>
         </div>
-        @include('page.home.detail')
+        @include('page.home.borrow-detail')
     </div>
 </div>
 @endsection
