@@ -29,6 +29,7 @@
         	width: 100%;
         	height: auto;
         	display: block;
+            
         }
 
         .card-img span {
